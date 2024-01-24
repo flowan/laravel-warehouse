@@ -27,7 +27,7 @@ class Install extends Command
     public function handle()
     {
         $bucket = 'public';
-        $path = bucket_path('', $bucket);
+        $path = bucket_relative_path('', $bucket);
 
         if (Storage::directoryExists($path)) {
             $this->warn('Application already installed');

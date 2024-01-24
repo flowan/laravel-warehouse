@@ -42,7 +42,7 @@ class CreateBucket extends Command
             return;
         }
 
-        $path = bucket_path('', $bucket);
+        $path = bucket_relative_path('', $bucket);
 
         if (Storage::directoryExists($path)) {
             $this->error('Bucket already exists');

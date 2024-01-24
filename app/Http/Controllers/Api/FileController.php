@@ -9,27 +9,9 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request): JsonResponse
     {
-        // Check if file already exists
-        //        if (Storage::exists($path.'/'.$fileName)) {
-        //            return response()->json([
-        //                'message' => 'File already exists'
-        //            ], 409);
-        //        }
-
-        $path = bucket_path(
+        $path = bucket_relative_path(
             $request->input('path', ''),
             $request->input('bucket')
         );
@@ -49,12 +31,9 @@ class FileController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Request $request)
     {
-        $path = bucket_path(
+        $path = bucket_relative_path(
             $request->input('path', ''),
             $request->input('bucket')
         );
@@ -66,20 +45,9 @@ class FileController extends Controller
         return Storage::get($path);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Request $request): JsonResponse
     {
-        $path = bucket_path(
+        $path = bucket_relative_path(
             $request->input('path', ''),
             $request->input('bucket')
         );
@@ -114,7 +82,7 @@ class FileController extends Controller
 
     public function exists(Request $request): JsonResponse
     {
-        $path = bucket_path(
+        $path = bucket_relative_path(
             $request->input('path', ''),
             $request->input('bucket')
         );
@@ -126,7 +94,7 @@ class FileController extends Controller
 
     public function meta(Request $request): JsonResponse
     {
-        $path = bucket_path(
+        $path = bucket_relative_path(
             $request->input('path', ''),
             $request->input('bucket')
         );
@@ -134,6 +102,9 @@ class FileController extends Controller
         return response()->json([
             'meta' => [
                 'size' => Storage::fileSize($path),
+                'mime_type' => Storage::mimeType($path),
+                'last_modified' => Storage::lastModified($path),
+                'visibility' => Storage::getVisibility($path),
             ],
         ]);
     }
