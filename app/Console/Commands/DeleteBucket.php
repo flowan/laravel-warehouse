@@ -47,7 +47,7 @@ class DeleteBucket extends Command
             return;
         }
 
-        if (! (bool) $this->option('confirm') && ! $this->confirm('Are you sure you want to delete this bucket?')) {
+        if (! (bool) $this->option('force') && ! $this->confirm('Are you sure you want to delete this bucket?')) {
             return;
         }
 
