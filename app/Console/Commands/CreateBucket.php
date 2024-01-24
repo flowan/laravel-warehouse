@@ -32,11 +32,13 @@ class CreateBucket extends Command
 
         if (empty($bucket)) {
             $this->error('Bucket name cannot be empty');
+
             return;
         }
 
         if (str_contains($bucket, '/')) {
             $this->error('Bucket name cannot contain slashes');
+
             return;
         }
 
@@ -44,6 +46,7 @@ class CreateBucket extends Command
 
         if (Storage::directoryExists($path)) {
             $this->error('Bucket already exists');
+
             return;
         }
 

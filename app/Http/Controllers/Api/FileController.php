@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class FileController extends Controller
 {
@@ -24,11 +23,11 @@ class FileController extends Controller
     public function store(Request $request): JsonResponse
     {
         // Check if file already exists
-//        if (Storage::exists($path.'/'.$fileName)) {
-//            return response()->json([
-//                'message' => 'File already exists'
-//            ], 409);
-//        }
+        //        if (Storage::exists($path.'/'.$fileName)) {
+        //            return response()->json([
+        //                'message' => 'File already exists'
+        //            ], 409);
+        //        }
 
         $path = bucket_path($request->input('path', ''));
 
@@ -38,12 +37,12 @@ class FileController extends Controller
         // Check if file was stored
         if (! $stored) {
             return response()->json([
-                'message' => 'File could not be stored'
+                'message' => 'File could not be stored',
             ], 500);
         }
 
         return response()->json([
-            'message' => 'File uploaded successfully'
+            'message' => 'File uploaded successfully',
         ]);
     }
 
@@ -79,7 +78,7 @@ class FileController extends Controller
         // Check if file or folder exists
         if (! Storage::exists($path)) {
             return response()->json([
-                'message' => 'File not found'
+                'message' => 'File not found',
             ], 404);
         }
 
@@ -95,12 +94,12 @@ class FileController extends Controller
         // Check if file was deleted
         if (! $deleted) {
             return response()->json([
-                'message' => 'File could not be deleted'
+                'message' => 'File could not be deleted',
             ], 500);
         }
 
         return response()->json([
-            'message' => 'File deleted successfully'
+            'message' => 'File deleted successfully',
         ]);
     }
 
@@ -109,7 +108,7 @@ class FileController extends Controller
         $path = bucket_path($request->input('path', ''));
 
         return response()->json([
-            'exists' => Storage::exists($path)
+            'exists' => Storage::exists($path),
         ]);
     }
 

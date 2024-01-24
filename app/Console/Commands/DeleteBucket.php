@@ -32,11 +32,13 @@ class DeleteBucket extends Command
 
         if (empty($bucket)) {
             $this->error('Bucket name cannot be empty');
+
             return;
         }
 
         if (str_contains($bucket, '/')) {
             $this->error('Bucket name cannot contain slashes');
+
             return;
         }
 
@@ -44,6 +46,7 @@ class DeleteBucket extends Command
 
         if (! Storage::directoryExists($path)) {
             $this->error('Bucket does not exist');
+
             return;
         }
 
