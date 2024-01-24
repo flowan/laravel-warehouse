@@ -29,7 +29,10 @@ class FileController extends Controller
         //            ], 409);
         //        }
 
-        $path = bucket_path($request->input('path', ''));
+        $path = bucket_path(
+            $request->input('path', ''),
+            $request->input('bucket')
+        );
 
         // Store file
         $stored = Storage::put($path, $request->input('contents', ''));
@@ -51,7 +54,10 @@ class FileController extends Controller
      */
     public function show(Request $request)
     {
-        $path = bucket_path($request->input('path', ''));
+        $path = bucket_path(
+            $request->input('path', ''),
+            $request->input('bucket')
+        );
 
         if (! Storage::fileExists($path)) {
             return response('', 404);
@@ -73,7 +79,10 @@ class FileController extends Controller
      */
     public function destroy(Request $request): JsonResponse
     {
-        $path = bucket_path($request->input('path', ''));
+        $path = bucket_path(
+            $request->input('path', ''),
+            $request->input('bucket')
+        );
 
         // Check if file or folder exists
         if (! Storage::exists($path)) {
@@ -105,7 +114,10 @@ class FileController extends Controller
 
     public function exists(Request $request): JsonResponse
     {
-        $path = bucket_path($request->input('path', ''));
+        $path = bucket_path(
+            $request->input('path', ''),
+            $request->input('bucket')
+        );
 
         return response()->json([
             'exists' => Storage::exists($path),
@@ -114,7 +126,10 @@ class FileController extends Controller
 
     public function meta(Request $request): JsonResponse
     {
-        $path = bucket_path($request->input('path', ''));
+        $path = bucket_path(
+            $request->input('path', ''),
+            $request->input('bucket')
+        );
 
         return response()->json([
             'meta' => [
