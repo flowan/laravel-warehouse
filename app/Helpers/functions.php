@@ -1,6 +1,6 @@
 <?php
 
-function bucket_path(string $path, string $bucket = 'public'): string
+function bucket_path(string $filePath = '', string $bucket = 'public'): string
 {
-    return $bucket.'/'.trim($path, '/');
+    return 'bucket/'.$bucket.'/'.trim($filePath, '/');
 }

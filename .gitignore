@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 /build
 phpstan.neon
+.phpactor.json
