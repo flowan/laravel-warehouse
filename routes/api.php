@@ -15,14 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('file', [FileController::class, 'show']);
-Route::post('file', [FileController::class, 'store']);
-Route::post('file/meta', [FileController::class, 'meta']);
-Route::post('file/exists', [FileController::class, 'exists']);
-Route::delete('file', [FileController::class, 'destroy']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('file', [FileController::class, 'show']);
+    Route::post('file', [FileController::class, 'store']);
+    Route::post('file/meta', [FileController::class, 'meta']);
+    Route::post('file/exists', [FileController::class, 'exists']);
+    Route::delete('file', [FileController::class, 'destroy']);
 
-Route::post('directory', [DirectoryController::class, 'store']);
-Route::post('directory/exists', [DirectoryController::class, 'exists']);
-Route::delete('directory', [DirectoryController::class, 'destroy']);
+    Route::post('directory', [DirectoryController::class, 'store']);
+    Route::post('directory/exists', [DirectoryController::class, 'exists']);
+    Route::delete('directory', [DirectoryController::class, 'destroy']);
+});
 
 // TODO add endpoints for bucket creation
