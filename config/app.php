@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel Simple Storage'),
+    'name' => env('APP_NAME', 'Laravel Warehouse'),
 
     /*
     |--------------------------------------------------------------------------
