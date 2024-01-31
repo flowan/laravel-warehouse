@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('file', [FileController::class, 'store']);
     Route::post('file/meta', [FileController::class, 'meta']);
     Route::post('file/exists', [FileController::class, 'exists']);
+    Route::post('file/move', [FileController::class, 'move']);
     Route::delete('file', [FileController::class, 'destroy']);
 
     Route::post('directory', [DirectoryController::class, 'store']);
