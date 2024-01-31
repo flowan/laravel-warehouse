@@ -32,7 +32,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => env('STORAGE_PATH', storage_path('app')),
+            'root' => env('STORAGE_PATH', storage_path('app/bucket')),
             'throw' => false,
         ],
 
@@ -49,8 +49,6 @@ return [
     |
     */
 
-    'links' => [
-        public_path('storage') => storage_path('app/public'),
-    ],
+    'links' => [],
 
 ];

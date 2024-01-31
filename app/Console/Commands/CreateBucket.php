@@ -42,7 +42,7 @@ class CreateBucket extends Command
             return;
         }
 
-        $path = bucket_relative_path('', $bucket);
+        $path = bucket_relative_path($bucket);
 
         if (Storage::directoryExists($path)) {
             $this->error('Bucket already exists');
@@ -56,7 +56,7 @@ class CreateBucket extends Command
         $visibility = $this->option('visibility');
         if ($visibility === 'public') {
             $this->laravel->make('files')->link(
-                storage_path('app/bucket/'.$bucket),
+                bucket_path($bucket),
                 public_path($bucket)
             );
         }

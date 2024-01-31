@@ -27,7 +27,7 @@ class Install extends Command
     public function handle()
     {
         $bucket = 'public';
-        $path = bucket_relative_path('', $bucket);
+        $path = bucket_relative_path($bucket);
 
         if (Storage::directoryExists($path)) {
             $this->warn('Application already installed');
@@ -40,7 +40,7 @@ class Install extends Command
         Storage::createDirectory($path);
 
         $this->laravel->make('files')->link(
-            storage_path('app/bucket/'.$bucket),
+            bucket_path($bucket),
             public_path($bucket)
         );
 

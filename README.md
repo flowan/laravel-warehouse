@@ -12,7 +12,7 @@ Warehouse is a simple storage for Laravel. It allows you to store files in a rem
 You can create a new project using Composer:
 
 ```bash
-composer create-project flowan/laravel-warehouse example-warehouse
+composer create-project flowan/laravel-warehouse
 ```
 
 ## Development

@@ -1,7 +1,7 @@
 {
     "name": "flowan/laravel-warehouse",
     "type": "project",
-    "description": "Laravel Warehouse",
+    "description": "Simple Storage for Laravel",
     "keywords": ["laravel", "warehouse", "storage"],
     "license": "MIT",
     "require": {

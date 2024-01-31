@@ -13,8 +13,8 @@ class DirectoryController extends Controller
     public function store(Request $request): JsonResponse
     {
         $path = bucket_relative_path(
-            $request->input('path', ''),
-            $request->input('bucket')
+            $request->input('bucket'),
+            $request->input('path')
         );
 
         Storage::createDirectory($path);
@@ -33,8 +33,8 @@ class DirectoryController extends Controller
     public function destroy(Request $request): JsonResponse
     {
         $path = bucket_relative_path(
-            $request->input('path', ''),
-            $request->input('bucket')
+            $request->input('bucket'),
+            $request->input('path')
         );
 
         if (Storage::directoryExists($path) && ! Storage::deleteDirectory($path)) {
@@ -51,8 +51,8 @@ class DirectoryController extends Controller
     public function exists(Request $request): JsonResponse
     {
         $path = bucket_relative_path(
-            $request->input('path', ''),
-            $request->input('bucket')
+            $request->input('bucket'),
+            $request->input('path')
         );
 
         return response()->json([
@@ -63,8 +63,8 @@ class DirectoryController extends Controller
     public function files(Request $request): JsonResponse
     {
         $path = bucket_relative_path(
-            $request->input('path', ''),
-            $request->input('bucket')
+            $request->input('bucket'),
+            $request->input('path')
         );
 
         $files = Storage::files($path, $request->input('recursive', false));

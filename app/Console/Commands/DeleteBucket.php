@@ -42,7 +42,7 @@ class DeleteBucket extends Command
             return;
         }
 
-        $path = bucket_relative_path('', $bucket);
+        $path = bucket_relative_path($bucket);
 
         if (! Storage::directoryExists($path)) {
             $this->error('Bucket does not exist');
