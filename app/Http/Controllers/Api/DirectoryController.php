@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class DirectoryController extends Controller
 {
@@ -56,6 +57,25 @@ class DirectoryController extends Controller
 
         return response()->json([
             'exists' => Storage::directoryExists($path),
+        ]);
+    }
+
+    public function files(Request $request): JsonResponse
+    {
+        $path = bucket_relative_path(
+            $request->input('path', ''),
+            $request->input('bucket')
+        );
+
+        $files = Storage::files($path, $request->input('recursive', false));
+
+        // Remove bucket path from the file names
+        foreach ($files as &$file) {
+            $file = Str::of($file)->after($path)->__toString();
+        }
+
+        return response()->json([
+            'files' => $files,
         ]);
     }
 }

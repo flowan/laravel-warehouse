@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('directory', [DirectoryController::class, 'store']);
     Route::post('directory/exists', [DirectoryController::class, 'exists']);
+    Route::post('directory/files', [DirectoryController::class, 'files']);
     Route::delete('directory', [DirectoryController::class, 'destroy']);
 });
 
