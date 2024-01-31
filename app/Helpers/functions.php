@@ -7,14 +7,16 @@ function bucket_relative_path(string $bucket = 'public', ?string $filePath = nul
 {
     $filePath = Str::of($filePath ?? '')
         ->replace(['../', '/..'], ['', ''])
-        ->trim('/');
+        ->trim('/')
+        ->toString();
 
     return $bucket.($filePath ? '/'.$filePath : '');
 }
 
 function bucket_path(string $bucket = 'public', ?string $filePath = null): string
 {
-    $root = Config::get('filesystems.disks.local.root');
+    $rootPath = Config::get('filesystems.disks.local.root');
+    $rootPath = Str::of($rootPath)->rtrim('/')->toString();
 
-    return Str::of($root)->rtrim('/').'/'.bucket_relative_path($bucket, $filePath);
+    return $rootPath.'/'.bucket_relative_path($bucket, $filePath);
 }
