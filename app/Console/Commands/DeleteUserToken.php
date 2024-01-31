@@ -55,7 +55,7 @@ class DeleteUserToken extends Command
 
             $tokenId = Str::of($token)->before('|');
 
-            $user->tokens->where('id', $tokenId)->delete();
+            $user->tokens()->where('id', $tokenId)->delete();
 
             $this->info('Token deleted');
 
