@@ -125,4 +125,21 @@ class FileController extends Controller
             'moved' => Storage::move($source, $destination),
         ]);
     }
+
+    public function copy(Request $request): JsonResponse
+    {
+        $source = bucket_relative_path(
+            $request->input('bucket'),
+            $request->input('source')
+        );
+
+        $destination = bucket_relative_path(
+            $request->input('bucket'),
+            $request->input('destination')
+        );
+
+        return response()->json([
+            'copied' => Storage::copy($source, $destination),
+        ]);
+    }
 }
