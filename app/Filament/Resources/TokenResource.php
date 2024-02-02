@@ -25,7 +25,7 @@ class TokenResource extends Resource
             ->schema([
                 Forms\Components\Select::make('tokenable')
                     ->label('User')
-                    ->options(User::all()->pluck('name', 'id'))
+                    ->options(User::all()->pluck('name', 'id')) /** @phpstan-ignore-line */
                     ->searchable()
                     ->required(),
                 Forms\Components\TextInput::make('name')
