@@ -31,7 +31,7 @@ class FileController extends Controller
         ]);
     }
 
-    public function show(Request $request)
+    public function show(Request $request): string
     {
         $path = bucket_relative_path(
             $request->input('bucket'),
