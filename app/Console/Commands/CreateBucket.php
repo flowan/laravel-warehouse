@@ -57,7 +57,7 @@ class CreateBucket extends Command
         if ($visibility === 'public') {
             $this->laravel->make('files')->link(
                 bucket_path($bucket),
-                public_path($bucket)
+                public_path('bucket/'.$bucket)
             );
         }
 

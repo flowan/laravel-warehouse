@@ -32,7 +32,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => env('STORAGE_PATH', storage_path('app/bucket')),
+            'root' => env('STORAGE_PATH', storage_path('app')),
             'throw' => false,
         ],
 

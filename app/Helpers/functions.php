@@ -10,7 +10,7 @@ function bucket_relative_path(string $bucket = 'public', ?string $filePath = nul
         ->trim('/')
         ->toString();
 
-    return $bucket.($filePath ? '/'.$filePath : '');
+    return 'bucket/'.$bucket.($filePath ? '/'.$filePath : '');
 }
 
 function bucket_path(string $bucket = 'public', ?string $filePath = null): string

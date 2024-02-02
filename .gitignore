@@ -1,5 +1,9 @@
 /.phpunit.cache
 /node_modules
+/public/build
+/public/hot
+/public/storage
+/public/bucket
 /storage/*.key
 /vendor
 .env
@@ -16,8 +20,3 @@ yarn-error.log
 /.vscode
 /build
 .phpactor.json
-
-/public
-!/public/favicon.ico
-!/public/index.php
-!/public/robots.txt

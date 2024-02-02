@@ -41,7 +41,7 @@ class Install extends Command
 
         $this->laravel->make('files')->link(
             bucket_path($bucket),
-            public_path($bucket)
+            public_path('bucket/'.$bucket)
         );
 
         $this->info('Application installed');
