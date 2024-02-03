@@ -49,6 +49,7 @@ class BucketResource extends Resource
                     ->color(fn (string $state): string => match ($state) {
                         'private' => 'warning',
                         'public' => 'success',
+                        default => 'danger',
                     }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->searchable()

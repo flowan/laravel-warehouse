@@ -50,9 +50,9 @@ class BucketHelper
 
         if ($visibility === 'public') {
             if (! realpath($publicPath)) {
-                symlink($path, $publicPath);
+                $created = symlink($path, $publicPath);
 
-                throw_if(! realpath($publicPath), new \Exception('Failed to set bucket directory to public'));
+                throw_if(! $created, new \Exception('Failed to set bucket directory to public'));
             }
         } else {
             if (realpath($publicPath)) {
