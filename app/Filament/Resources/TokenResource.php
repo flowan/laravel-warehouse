@@ -23,12 +23,12 @@ class TokenResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('name')
+                    ->required(),
                 Forms\Components\Select::make('tokenable')
                     ->label('User')
                     ->options(User::all()->pluck('name', 'id')) /** @phpstan-ignore-line */
                     ->searchable()
-                    ->required(),
-                Forms\Components\TextInput::make('name')
                     ->required(),
                 Forms\Components\DateTimePicker::make('expires_at'),
             ]);
@@ -38,16 +38,18 @@ class TokenResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('tokenable.name')
-                    ->label('User'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('tokenable.name')
+                    ->label('User'),
                 Tables\Columns\TextColumn::make('last_used_at')
                     ->dateTime()
+                    ->placeholder('-')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('expires_at')
                     ->dateTime()
+                    ->placeholder('Never')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
