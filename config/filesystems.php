@@ -32,7 +32,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => config('warehouse.storage.path'),
+            'root' => env('WAREHOUSE_STORAGE_PATH', storage_path('app')),
             'throw' => false,
         ],
 

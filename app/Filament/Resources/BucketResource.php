@@ -60,7 +60,8 @@ class BucketResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     public static function getRelations(): array
