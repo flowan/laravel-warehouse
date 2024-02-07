@@ -7,6 +7,8 @@
 
 Warehouse is a simple storage for Laravel. It allows you to store files using an HTTP API.
 
+<img alt="laravel-warehouse" src="https://github.com/flowan/laravel-warehouse/assets/5268124/116865ac-b9af-4d59-9d37-fe5b0567913a">
+
 ## Installation
 
 You can create a new project using Composer:
