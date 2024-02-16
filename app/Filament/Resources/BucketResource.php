@@ -52,13 +52,19 @@ class BucketResource extends Resource
                         default => 'danger',
                     }),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->actions([
+                Tables\Actions\Action::make('files')
+                    ->label('Files')
+                    ->icon('heroicon-o-folder-open')
+                    ->url(fn (Bucket $record): string => route('filament.admin.resources.buckets.files', $record)),
                 Tables\Actions\EditAction::make(),
             ])
             ->defaultSort('id', 'desc');
@@ -77,6 +83,7 @@ class BucketResource extends Resource
             'index' => Pages\ListBuckets::route('/'),
             'create' => Pages\CreateBucket::route('/create'),
             'edit' => Pages\EditBucket::route('/{record}/edit'),
+            'files' => Pages\Files::route('/{record}/files'),
         ];
     }
 }
