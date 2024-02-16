@@ -27,7 +27,7 @@ class Files extends Page
 
     public string $path = '';
 
-    public function mount(int | string $record): void
+    public function mount(int|string $record): void
     {
         $this->record = $this->resolveRecord($record);
         $this->path = (string) request()->input('path', '');
@@ -43,7 +43,7 @@ class Files extends Page
 
         if (! empty($this->path)) {
             $this->breadcrumbs = collect(explode('/', $this->path))->map(function ($part, $index) {
-                return (object)[
+                return (object) [
                     'name' => $part,
                     'path' => implode('/', array_slice(explode('/', $this->path), 0, $index + 1)),
                 ];
@@ -75,7 +75,7 @@ class Files extends Page
         $this->files = $files;
     }
 
-    protected function resolveRecord(int | string $key): Model
+    protected function resolveRecord(int|string $key): Model
     {
         $record = static::getResource()::resolveRecordRouteBinding($key);
 
