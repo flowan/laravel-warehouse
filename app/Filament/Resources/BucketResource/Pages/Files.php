@@ -67,6 +67,7 @@ class Files extends Page
             $files[$key] = (object) [
                 'name' => basename($file),
                 'path' => Str::of($file)->after(bucket_relative_path($this->record->name))->trim('/')->__toString(),
+                'url' => url($file),
                 'size' => format_filesize(Storage::size($file), 2),
                 'last_modified' => Carbon::createFromTimestamp(Storage::lastModified($file))->format(Table::$defaultDateTimeDisplayFormat),
             ];
