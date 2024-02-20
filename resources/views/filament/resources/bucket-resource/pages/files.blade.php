@@ -30,7 +30,7 @@
                             <div class="fi-ta-col-wrp flex items-center">
                                 <x-filament::icon
                                     icon="heroicon-o-folder"
-                                    class="h-6 w-6 text-gray-400 dark:text-gray-500"
+                                    class="h-6 w-6 text-primary-600 dark:text-primary-400"
                                 />
                                 <a href="?path={{ $directory->path }}" class="fi-ta-text inline-block w-full px-3 py-3 text-sm">{{ $directory->name }}</a>
                             </div>
